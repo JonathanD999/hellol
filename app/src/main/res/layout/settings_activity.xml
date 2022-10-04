@@ -1,0 +1,242 @@
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:layout_margin="16dp"
+    android:gravity="center"
+    android:orientation="horizontal">
+
+    <ScrollView
+        android:layout_width="match_parent"
+        android:fillViewport="true"
+        android:layout_height="match_parent">
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="vertical">
+
+            <Button
+                android:id="@+id/restoreDefaultsButton"
+                android:layout_width="190dp"
+                android:layout_height="wrap_content"
+                android:onClick="handleRestoreDefaults"
+                android:text="Restore defaults" />
+
+            <TextView
+                android:id="@+id/categoryBLEScanFilter"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginLeft="10dp"
+                android:layout_marginTop="16dp"
+                android:text="BLE Scan Filter"
+                android:textColor="@color/em_secondary"
+                android:textSize="20sp" />
+
+            <TextView
+                android:id="@+id/friendlyNameFilterLabel"
+                android:layout_width="match_parent"
+                android:layout_height="19dp"
+                android:layout_marginLeft="16dp"
+                android:layout_marginTop="16dp"
+                android:text="Prefix pattern (matches friendly names starting with this). Case sensitive"
+                android:textStyle="bold" />
+
+            <com.google.android.material.textfield.TextInputEditText
+                android:id="@+id/friendlyNameFilter"
+                android:layout_width="267dp"
+                android:layout_height="53dp"
+                android:layout_marginLeft="16dp"
+                android:layout_marginTop="16dp"
+                android:hint=".*" />
+
+            <TextView
+                android:id="@+id/rssiFilterLabel"
+                android:layout_width="129dp"
+                android:layout_height="19dp"
+                android:layout_marginLeft="16dp"
+                android:layout_marginTop="16dp"
+                android:text="RSSI filter"
+                android:textStyle="bold" />
+
+            <SeekBar
+                android:id="@+id/rssiFilter"
+                android:layout_width="match_parent"
+                android:layout_height="39dp"
+                android:layout_marginLeft="16dp"
+                android:layout_marginTop="16dp"
+                android:onClick="handleRssiFilterChange"
+                android:progress="50" />
+
+            <TextView
+                android:id="@+id/categoryMQTTBrokerSetup"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginLeft="10dp"
+                android:layout_marginTop="16dp"
+                android:text="MQTT Broker Setup"
+                android:textColor="@color/em_secondary"
+                android:textSize="20sp" />
+
+            <TextView
+                android:id="@+id/mqttPortLabel"
+                android:layout_width="match_parent"
+                android:layout_height="19dp"
+                android:layout_marginLeft="16dp"
+                android:layout_marginTop="16dp"
+                android:text="Mqtt port"
+                android:textStyle="bold" />
+
+            <EditText
+                android:id="@+id/mqttPort"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginLeft="16dp"
+                android:layout_marginTop="16dp"
+                android:ems="10"
+                android:hint="Port number"
+                android:inputType="number"
+                android:minHeight="48dp" />
+
+            <TextView
+                android:id="@+id/mqttHostLabel"
+                android:layout_width="match_parent"
+                android:layout_height="19dp"
+                android:layout_marginLeft="16dp"
+                android:layout_marginTop="16dp"
+                android:text="Mqtt host"
+                android:textStyle="bold" />
+
+            <EditText
+                android:id="@+id/mqttHost"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginLeft="16dp"
+                android:layout_marginTop="16dp"
+                android:ems="10"
+                android:hint="Broker address"
+                android:inputType="textPersonName"
+                android:minHeight="48dp" />
+
+            <TextView
+                android:id="@+id/mqttUsernameLabel"
+                android:layout_width="match_parent"
+                android:layout_height="19dp"
+                android:layout_marginLeft="16dp"
+                android:layout_marginTop="16dp"
+                android:text="Mqtt username"
+                android:textStyle="bold" />
+
+            <EditText
+                android:id="@+id/mqttUsername"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginLeft="16dp"
+                android:layout_marginTop="16dp"
+                android:ems="10"
+                android:hint="Username"
+                android:inputType="textPersonName"
+                android:minHeight="48dp" />
+
+            <TextView
+                android:id="@+id/mqttPasswordLabel"
+                android:layout_width="match_parent"
+                android:layout_height="19dp"
+                android:layout_marginLeft="16dp"
+                android:layout_marginTop="16dp"
+                android:text="Mqtt password"
+                android:textStyle="bold" />
+
+            <EditText
+                android:id="@+id/mqttPassword"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginLeft="16dp"
+                android:layout_marginTop="16dp"
+                android:ems="10"
+                android:inputType="textPassword"
+                android:minHeight="48dp" />
+
+            <TextView
+                android:id="@+id/categoryMQTTPayloadSetup"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginLeft="10dp"
+                android:layout_marginTop="16dp"
+                android:text="MQTT Payload Setup"
+                android:textColor="@color/em_secondary"
+                android:textSize="20sp" />
+
+            <TextView
+                android:id="@+id/mqttTopicLabel"
+                android:layout_width="match_parent"
+                android:layout_height="19dp"
+                android:layout_marginLeft="16dp"
+                android:layout_marginTop="16dp"
+                android:text="Mqtt publishing topic"
+                android:textStyle="bold" />
+
+            <EditText
+                android:id="@+id/mqttTopic"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginLeft="16dp"
+                android:layout_marginTop="16dp"
+                android:ems="10"
+                android:hint="Topic"
+                android:inputType="textPersonName"
+                android:minHeight="48dp" />
+
+            <TextView
+                android:id="@+id/bridgeNameLabel"
+                android:layout_width="match_parent"
+                android:layout_height="19dp"
+                android:layout_marginLeft="16dp"
+                android:layout_marginTop="16dp"
+                android:text="Bridge name"
+                android:textStyle="bold" />
+
+            <EditText
+                android:id="@+id/mqttBridgeName"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginLeft="16dp"
+                android:layout_marginTop="16dp"
+                android:ems="10"
+                android:hint="Bridge Name"
+                android:inputType="textPersonName"
+                android:minHeight="48dp" />
+
+            <TextView
+                android:id="@+id/categoryMQTTPayloadSetup2"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginLeft="10dp"
+                android:layout_marginTop="16dp"
+                android:text="App Setup"
+                android:textColor="@color/em_secondary"
+                android:textSize="20sp" />
+
+            <com.google.android.material.switchmaterial.SwitchMaterial
+                android:id="@+id/errorReportSwitch"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginLeft="16dp"
+                android:layout_marginTop="16dp"
+                android:textColor="@color/em_secondary"
+                android:text="Send error reports to EM" />
+
+            <Button
+                android:id="@+id/button2"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginLeft="16dp"
+                android:layout_marginTop="48dp"
+                android:onClick="handleSaveAndContinue"
+                android:text="Save and continue" />
+
+        </LinearLayout>
+    </ScrollView>
+
+</LinearLayout>

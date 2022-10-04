@@ -1,0 +1,70 @@
+plugins {
+    id 'com.android.application'
+    id 'kotlin-android'
+}
+
+def apikeyPropertiesFile = rootProject.file("apikey.properties")
+def apikeyProperties = new Properties()
+apikeyProperties.load(new FileInputStream(apikeyPropertiesFile))
+
+android {
+    compileSdk 32
+
+    defaultConfig {
+        applicationId "com.example.em_ble_bridge"
+        minSdk 21
+        targetSdk 32
+        versionCode 1
+        versionName "1.0"
+
+        testInstrumentationRunner "androidx.test.runner.AndroidJUnitRunner"
+
+        buildConfigField("String", "MQTT_HOST", apikeyProperties['MQTT_HOST'])
+        buildConfigField("String", "MQTT_USERNAME", apikeyProperties['MQTT_USERNAME'])
+        buildConfigField("String", "MQTT_PASSWORD", apikeyProperties['MQTT_PASSWORD'])
+        buildConfigField("String", "MQTT_TOPIC", apikeyProperties['MQTT_TOPIC'])
+        buildConfigField("String", "SENDER_EMAIL", apikeyProperties['SENDER_EMAIL'])
+        buildConfigField("String", "ERROR_EMAIL", apikeyProperties['ERROR_EMAIL'])
+        buildConfigField("String", "SENDER_PASSWORD", apikeyProperties['SENDER_PASSWORD'])
+
+        buildConfigField("int", "MQTT_PORT", apikeyProperties['MQTT_PORT'])
+    }
+
+    buildTypes {
+        release {
+            minifyEnabled false
+            proguardFiles getDefaultProguardFile('proguard-android-optimize.txt'), 'proguard-rules.pro'
+        }
+    }
+    compileOptions {
+        sourceCompatibility JavaVersion.VERSION_1_8
+        targetCompatibility JavaVersion.VERSION_1_8
+    }
+    kotlinOptions {
+        jvmTarget = '1.8'
+    }
+    packagingOptions {
+        resources.excludes.add("META-INF/*")
+    }
+}
+
+dependencies {
+
+    implementation 'androidx.core:core-ktx:1.3.2'
+    implementation 'androidx.appcompat:appcompat:1.2.0'
+    implementation 'com.google.android.material:material:1.3.0'
+    implementation 'androidx.constraintlayout:constraintlayout:2.0.4'
+    implementation 'androidx.preference:preference:1.1.1'
+    testImplementation 'junit:junit:4.+'
+    androidTestImplementation 'androidx.test.ext:junit:1.1.2'
+    androidTestImplementation 'androidx.test.espresso:espresso-core:3.3.0'
+
+    implementation 'com.hivemq:hivemq-mqtt-client:1.2.1'
+    implementation 'com.google.android.gms:play-services-location:19.0.0'
+    implementation 'com.google.code.gson:gson:2.8.9'
+
+    implementation 'com.sun.mail:android-mail:1.5.6'
+    implementation 'com.sun.mail:android-activation:1.5.6'
+}
+
+apply plugin: 'kotlin-android-extensions'
